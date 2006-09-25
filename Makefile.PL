@@ -1,7 +1,8 @@
-use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
-# Blah!
+#use ExtUtils::MakeMaker;
+use inc::Module::Install;
+
+license 'perl';
+author 'Chris Williams <chris@bingosnet.co.uk>';
 
 WriteMakefile(
 			  'NAME'	=> 'POE::Filter::Bzip2',

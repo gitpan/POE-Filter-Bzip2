@@ -5,9 +5,7 @@ use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.2';
-
-sub PUT_LITERAL () { 1 }
+$VERSION = '1.3';
 
 sub new {
   my $type = shift;
@@ -49,9 +47,9 @@ sub get_one {
   my $self = shift;
   my $events = [];
 
-  if ( my $raw_line = shift ( @{ $self->{BUFFER} } ) ) {
+  if ( my $raw_line = shift @{ $self->{BUFFER} } ) {
 	if ( my $line = decompress( $raw_line ) ) {
-		push( @$events, $line );
+		push @$events, $line;
 	} else {
 		warn "Couldn\'t decompress input\n";
 	}
@@ -65,7 +63,7 @@ sub put {
 
   foreach my $event (@$events) {
 	if ( my $line = compress( $event, $self->{level} ) ) {
-		push( @$raw_lines, $line );
+		push @$raw_lines, $line;
 	} else {
 		warn "Couldn\'t compress output\n";
 	}
@@ -101,32 +99,32 @@ POE::Filter::Bzip2 -- A POE filter wrapped around Compress::Bzip2
 POE::Filter::Bzip2 provides a POE filter for performing compression/decompression using L<Compress::Bzip2|Compress::Bzip2>. It is
 suitable for use with L<POE::Filter::Stackable|POE::Filter::Stackable>.
 
+=head1 CONSTRUCTOR
+
+=over
+
+=item new
+
+Creates a new POE::Filter::Bzip2 object. Takes one optional argument, 'level': the level of compression to employ.
+Consult L<Compress::Bzip2> for details.
+
+=back
+
 =head1 METHODS
 
 =over
 
-=item *
-
-new
-
-Creates a new POE::Filter::Bzip2 object. Takes one optional argument, 'level': the level of compression to employ.
-Consult L<Compress::Bzip2|Compress::Bzip2> for details.
-
-=item *
-
-get
+=item get
+=item get_one
+=item get_one_start
 
 Takes an arrayref which is contains lines of compressed input. Returns an arrayref of decompressed lines.
 
-=item *
-
-put
+=item put
 
 Takes an arrayref containing lines of uncompressed output, returns an arrayref of compressed lines.
 
-=item *
-
-level
+=item level
 
 Sets the level of compression employed to the given value. If no value is supplied, returns the current level setting.
 
@@ -139,7 +137,9 @@ Chris Williams <chris@bingosnet.co.uk>
 =head1 SEE ALSO
 
 L<POE|POE>
+
 L<Compress::Bzip2|Compress::Bzip2>
+
 L<POE::Filter::Stackable|POE::Filter::Stackable>
 
 =cut
