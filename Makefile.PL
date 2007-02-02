@@ -1,16 +1,9 @@
-#use ExtUtils::MakeMaker;
 use inc::Module::Install;
-
+name 'POE-Filter-Bzip2';
 license 'perl';
 author 'Chris Williams <chris@bingosnet.co.uk>';
-
-WriteMakefile(
-			  'NAME'	=> 'POE::Filter::Bzip2',
-			  'PREREQ_PM' => {
-							  'POE'    => 0.3501,
-							  'Compress::Bzip2' => 2.08,
-							  'Carp' => 0,
-							 },
-			  'VERSION_FROM' => 'lib/POE/Filter/Bzip2.pm', # finds $VERSION
-			  'dist' => { 'COMPRESS' => 'gzip --best' },
-			 );
+version_from 'lib/POE/Filter/Bzip2.pm';
+requires 'Carp' => 0;
+requires 'POE' => 0.38;
+requires 'Compress::Bzip2' => 2.08;
+WriteAll();

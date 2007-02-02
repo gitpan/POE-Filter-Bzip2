@@ -1,15 +1,14 @@
-author: 'Chris Williams <chris@bingosnet.co.uk>'
+author: Chris Williams <chris@bingosnet.co.uk>
 distribution_type: module
 generated_by: Module::Install version 0.64
 license: perl
-module_name: POE::Filter::Bzip2
 name: POE-Filter-Bzip2
-no_index:
-  directory:
+no_index: 
+  directory: 
     - inc
     - t
-requires:
+requires: 
   Carp: 0
   Compress::Bzip2: 2.08
-  POE: 0.3501
-version: 1.4
+  POE: 0.38
+version: 1.50

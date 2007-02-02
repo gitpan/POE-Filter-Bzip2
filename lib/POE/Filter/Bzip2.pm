@@ -6,7 +6,7 @@ use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.4';
+$VERSION = '1.50';
 
 sub new {
   my $type = shift;
@@ -32,7 +32,8 @@ sub get {
   foreach my $raw_line (@$raw_lines) {
 	if ( my $line = decompress( $raw_line ) ) {
 		push @$events, $line;
-	} else {
+	} 
+	else {
 		warn "Couldn\'t decompress input\n";
 	}
   }
@@ -51,7 +52,8 @@ sub get_one {
   if ( my $raw_line = shift @{ $self->{BUFFER} } ) {
 	if ( my $line = decompress( $raw_line ) ) {
 		push @$events, $line;
-	} else {
+	} 
+	else {
 		warn "Couldn\'t decompress input\n";
 	}
   }
@@ -65,7 +67,8 @@ sub put {
   foreach my $event (@$events) {
 	if ( my $line = compress( $event, $self->{level} ) ) {
 		push @$raw_lines, $line;
-	} else {
+	} 
+	else {
 		warn "Couldn\'t compress output\n";
 	}
   }
