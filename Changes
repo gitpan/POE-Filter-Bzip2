@@ -1,6 +1,9 @@
 POE::Filter::Bzip2
 ==================
 
+1.51	Mon Feb 26 13:59:34 GMT 2007
+	- Added kwalitee test
+
 1.50	Fri Feb 02 15:41:59 GMT 2007
 	- Makefile.PL now fully Module::Install-ified.
 
