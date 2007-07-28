@@ -6,7 +6,7 @@ use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.51';
+$VERSION = '1.52';
 
 sub new {
   my $type = shift;
@@ -81,7 +81,7 @@ __END__
 
 =head1 NAME
 
-POE::Filter::Bzip2 -- A POE filter wrapped around Compress::Bzip2
+POE::Filter::Bzip2 - A POE filter wrapped around Compress::Bzip2
 
 =head1 SYNOPSIS
 
