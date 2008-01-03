@@ -6,7 +6,7 @@ use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.53';
+$VERSION = '1.54';
 
 sub new {
   my $type = shift;
@@ -75,6 +75,14 @@ sub put {
   return $raw_lines;
 }
 
+sub clone {
+  my $self = shift;
+  my $nself = { };
+  $nself->{$_} = $self->{$_} for keys %{ $self };
+  $nself->{BUFFER} = [ ];
+  return bless $nself, ref $self;
+}
+
 1;
 
 __END__
@@ -127,6 +135,10 @@ Takes an arrayref which is contains lines of compressed input. Returns an arrayr
 =item put
 
 Takes an arrayref containing lines of uncompressed output, returns an arrayref of compressed lines.
+
+=item clone
+
+Makes a copy of the filter, and clears the copy's buffer.
 
 =item level
 

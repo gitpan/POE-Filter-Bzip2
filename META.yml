@@ -19,4 +19,4 @@ requires:
   Carp: 0
   Compress::Bzip2: 2.08
   POE: 0.38
-version: 1.53
+version: 1.54
