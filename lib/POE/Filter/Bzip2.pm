@@ -1,12 +1,13 @@
 package POE::Filter::Bzip2;
 
 use strict;
+use warnings;
 use Carp;
 use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.54';
+$VERSION = '1.56';
 
 sub new {
   my $type = shift;

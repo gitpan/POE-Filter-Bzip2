@@ -1,6 +1,9 @@
 POE::Filter::Bzip2
 ==================
 
+1.56	Fri Mar  7 07:10:30 GMT 2008
+	- Kwalitee fixes.
+
 1.54	Thu Jan  3 17:54:20 GMT 2008
 	- Added clone() method and updated tests
 

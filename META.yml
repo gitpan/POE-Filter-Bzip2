@@ -3,6 +3,8 @@ abstract: A POE filter wrapped around Compress::Bzip2
 author: 
   - Chris Williams <chris@bingosnet.co.uk>
 build_requires: 
+  POE::Filter::Line: 0
+  POE::Filter::Stackable: 0
   Test::More: 0.47
 distribution_type: module
 generated_by: Module::Install version 0.68
@@ -19,4 +21,5 @@ requires:
   Carp: 0
   Compress::Bzip2: 2.08
   POE: 0.38
-version: 1.54
+  POE::Filter: 0
+version: 1.56
