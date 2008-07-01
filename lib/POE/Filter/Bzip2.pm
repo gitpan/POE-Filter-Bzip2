@@ -7,7 +7,7 @@ use Compress::Bzip2 qw(compress decompress);
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '1.56';
+$VERSION = '1.58';
 
 sub new {
   my $type = shift;
@@ -150,6 +150,12 @@ Sets the level of compression employed to the given value. If no value is suppli
 =head1 AUTHOR
 
 Chris Williams <chris@bingosnet.co.uk>
+
+=head1 LICENSE
+
+Copyright (C) Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 
